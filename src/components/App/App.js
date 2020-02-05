@@ -8,10 +8,14 @@ export default class App extends Component {
     this.state = {};
   }
 
+  setUserInfo = user => {
+    this.setState({ user });
+  };
+
   render() {
     return (
       <div className="App">
-        <Login />
+        <Login setUserInfo={this.setUserInfo} />
       </div>
     );
   }
