@@ -1,0 +1,25 @@
+.login-form {
+  border: 0.5em double black;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2em;
+  width: 40%;
+  > label {
+    margin: 0 0 0.25em;
+    &:not(:first-of-type) {
+      margin-top: 1em;
+    }
+  }
+  > button {
+    margin-top: 1.25em;
+  }
+  > input {
+    border-radius: 0.25em;
+    padding: 0.25em;
+  }
+  > h1 {
+    margin: 0 0 0.5em;
+  }
+}
