@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Login from '../Login/Login.js';
 
 export default class App extends Component {
   constructor() {
@@ -7,7 +8,15 @@ export default class App extends Component {
     this.state = {};
   }
 
-  render() {
+  setUserInfo = user => {
+    this.setState({ user });
+  };
 
+  render() {
+    return (
+      <div className="App">
+        <Login setUserInfo={this.setUserInfo} />
+      </div>
+    );
   }
 }
