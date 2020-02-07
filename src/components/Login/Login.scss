@@ -12,9 +12,6 @@
       margin-top: 1em;
     }
   }
-  > button {
-    margin-top: 1.25em;
-  }
   > input {
     border-radius: 0.25em;
     padding: 0.25em;
@@ -22,4 +19,18 @@
   > h1 {
     margin: 0 0 0.5em;
   }
+}
+
+.login-button {
+  align-items: center;
+  cursor: not-allowed;
+  border: 1px solid black;
+  border-radius: 0.25em;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  margin-top: 1em;
+  padding: 0.2em;
+  text-decoration: none;
+  width: 98%;
 }

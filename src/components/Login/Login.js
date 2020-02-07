@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor() {
@@ -13,6 +14,8 @@ export default class Login extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    if (this.state.name && this.state.email && this.state.reason) {
+    }
   };
 
   loginUser = e => {
@@ -49,9 +52,9 @@ export default class Login extends Component {
           <option value="Vacation">Vacation</option>
           <option value="Other">Other</option>
         </select>
-        <button onClick={this.loginUser} className="login-button">
+        <Link className="login-button" to="/Areas">
           Login
-        </button>
+        </Link>
       </form>
     );
   }
