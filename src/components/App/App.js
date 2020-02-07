@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Login from '../Login/Login.js';
+import { Switch, Route } from 'react-router-dom';
 
 export default class App extends Component {
   constructor() {
@@ -9,7 +10,6 @@ export default class App extends Component {
       user: {},
       areaDetails: [],
       listings: []
-    };
   }
 
   setUserInfo = user => {
