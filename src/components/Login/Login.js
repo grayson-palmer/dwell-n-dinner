@@ -14,8 +14,6 @@ export default class Login extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    if (this.state.name && this.state.email && this.state.reason) {
-    }
   };
 
   loginUser = e => {

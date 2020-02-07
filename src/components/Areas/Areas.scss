@@ -1,0 +1,10 @@
+.area-card {
+  border: 5px solid black;
+  height: 15em;
+  width: 15em;
+}
+
+.Areas-container {
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
