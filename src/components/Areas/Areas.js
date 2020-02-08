@@ -6,7 +6,9 @@ const Areas = props => {
   const areaCards = props.areaSpecs.map(area => {
     return (
       <Link className="area-card">
-        <h2>{area.name}</h2>
+        <h2>{area.name} - <i>{area.area}</i></h2>
+        <p>{area.location}</p>
+        <p>{area.about}</p>
       </Link>
     );
   });
