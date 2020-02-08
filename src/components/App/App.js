@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Login from '../Login/Login.js';
 import { Switch, Route } from 'react-router-dom';
-import Areas from './Areas.js';
+import Areas from '../Areas/Areas.js';
 
 export default class App extends Component {
   constructor() {
