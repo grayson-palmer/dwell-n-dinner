@@ -50,7 +50,7 @@ export default class Login extends Component {
           <option value="Vacation">Vacation</option>
           <option value="Other">Other</option>
         </select>
-        <Link className="login-button" to="/Areas">
+        <Link className="login-button" to="/areas">
           Login
         </Link>
       </form>
