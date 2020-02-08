@@ -1,0 +1,12 @@
+.listing-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.listing-card {
+  border: .5em solid black;
+  width: 30%;
+  margin: 1em;
+}
