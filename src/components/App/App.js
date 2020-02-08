@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Login from '../Login/Login.js';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import Areas from '../Areas/Areas.js';
 
 export default class App extends Component {
@@ -27,7 +27,7 @@ export default class App extends Component {
             .then(response => response.json())
             .then(details => {
               this.setState({
-                areaDetails: [...this.state.areaDetails, details]
+                areaDetails: [...this.state.areaDetails, {...details, area: area.area || area.name}]
               });
               console.log(this.state);
             })
@@ -55,8 +55,10 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login setUserInfo={this.setUserInfo} />
-        <Areas areaSpecs={this.state.areaDetails} />
+        <Switch>
+          <Route path='/areas' render={ () => <Areas areaSpecs={this.state.areaDetails} /> } />
+          <Route path='/' component={ Login } />
+        </Switch>
       </div>
     );
   }
