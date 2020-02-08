@@ -2,9 +2,8 @@ import React from 'react';
 import './Areas.scss';
 import { Link } from 'react-router-dom';
 
-
-const Areas = details => {
-  const areaCards = details.map(area => {
+const Areas = props => {
+  const areaCards = props.areaSpecs.map(area => {
     return (
       <Link className="area-card">
         <h2>{area.name}</h2>
@@ -12,11 +11,7 @@ const Areas = details => {
     );
   });
 
-  return (
-    <section className="Areas-container">
-      <{areaCards} />
-    </section>
-  );
+  return <section className="Areas-container">{areaCards}</section>;
 };
 
 export default Areas;
