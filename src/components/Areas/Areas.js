@@ -13,7 +13,7 @@ const Areas = props => {
     );
   });
 
-  return <section className="Areas-container">{areaCards}</section>;
+  return <section className="areas-container">{areaCards}</section>;
 };
 
 export default Areas;
