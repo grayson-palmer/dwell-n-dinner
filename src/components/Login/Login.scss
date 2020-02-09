@@ -1,6 +1,6 @@
 .login-form {
-  border: 0.5em double black;
-  border-radius: 1em;
+  border: 0.75rem double black;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -24,7 +24,7 @@
 .login-button {
   align-items: center;
   cursor: not-allowed;
-  border: 1px solid black;
+  border: .1rem solid black;
   border-radius: 0.25em;
   display: flex;
   height: 20px;
