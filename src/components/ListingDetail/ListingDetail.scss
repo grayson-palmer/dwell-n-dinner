@@ -1,0 +1,32 @@
+.listing-detail {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+.listing-detail__images {
+  display: flex;
+  background-color: #2b303a;
+  overflow: auto;
+  width: 100%;
+  > img {
+    width: 40em;
+    &:not(:last-child) {
+      margin-right: 0.75em;
+    }
+  }
+}
+
+.listing-detail__info {
+  display: flex;
+  justify-content: space-evenly;
+  > div {
+    border: 0.25em solid black;
+    flex: 1;
+    padding: 0.5em;
+  }
+  > h2,
+  h3 {
+    font-size: 1.5rem;
+  }
+}

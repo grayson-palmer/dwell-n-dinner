@@ -1,17 +1,16 @@
+@import '../../styles/mixins';
+
 .area-card {
-  border: .5rem solid black;
-  border-radius: 1rem;
+  @include card-styles;
   height: 15em;
+  padding: 0.75em;
   text-decoration: none;
-  margin: auto;
-  padding: 1em;
-  width: 20em;
+  margin: 0;
 }
 
 .areas-container {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   display: grid;
-  grid-gap: .5em; 
+  grid-gap: 0.5em;
 }
-

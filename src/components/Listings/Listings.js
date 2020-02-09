@@ -1,27 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Listings.scss';
 
-const Listings = (props) => {
-  const filteredListings = props.listings.filter(listing => listing.area_id === props.selectedAreaId)
-  const domListings = filteredListings.map(listing => {
+const Listings = props => {
+  const filteredListings = props.listings.filter(
+    listing => listing.area_id === props.selectedAreaId
+  );
+  const domListings = filteredListings.map(({ name, listing_id, area_id }) => {
     return (
-      <div className='listing-card'>
-        <h4>{listing.name}</h4>
-        <div className='.listing-image'>
-          <img src={`/images/${listing.listing_id}_a.jpg`} alt={listing.name} />
-        </div>
-        <button type='button'>See Details</button>
+      <div className="listings__card">
+        <h4>{name}</h4>
+        <img
+          className="listings__image"
+          src={`/images/${listing_id}_a.jpg`}
+          alt={name}
+        />
+        <Link to={`/areas/${area_id}/listing/${listing_id}`}>See Details</Link>
       </div>
-    )
-  })
+    );
+  });
 
-  
+  return <section className="listings">{domListings}</section>;
+};
 
-  return (
-    <section className='listing-section'>
-      {domListings}
-    </section>
-    )
-}
-
-export default Listings
+export default Listings;

@@ -1,6 +1,66 @@
 import React, { Component } from 'react';
 import './ListingDetail.scss';
 
-export default ListingDetail = () => {
-  return ()
+class ListingDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentListing: undefined
+    };
+  }
+
+  componentDidMount() {
+    const {
+      match: {
+        params: { listing_id }
+      }
+    } = this.props;
+    fetch(`http://localhost:3001/api/v1/listings/${listing_id}`)
+      .then(response => response.json())
+      .then(currentListing => this.setState({ currentListing }));
+  }
+
+  render() {
+    if (this.state.currentListing) {
+      const {
+        currentListing: { name, details, address, listing_id }
+      } = this.state;
+      const { beds, baths, cost_per_night, features } = details;
+      const featureList = features.map(feature => {
+        return <li>{feature}</li>;
+      });
+      return (
+        <section className="listing-detail">
+          <div className="listing-detail__images">
+            <img src={`/images/${listing_id}_a.jpg`} />
+            <img src={`/images/${listing_id}_b.jpg`} />
+            <img src={`/images/${listing_id}_c.jpg`} />
+          </div>
+          <article className="listing-detail__info">
+            <div>
+              <h2 className="listing-detail__name">{name}</h2>
+              <p className="listing-detail__address">
+                {address.street} Denver, CO {address.zip}
+              </p>
+            </div>
+            <div className="listing-detail__amenities">
+              <h3>Amenities:</h3>
+              <ul>
+                <li>Number of beds: {beds}</li>
+                <li>Number of baths: {baths}</li>
+                <li>Cost per night: ${cost_per_night}</li>
+              </ul>
+            </div>
+            <div className="listing-detail__features">
+              <h3>Features:</h3>
+              <ul>{featureList}</ul>
+            </div>
+          </article>
+        </section>
+      );
+    }
+    return null;
+  }
 }
+
+export default ListingDetail;
