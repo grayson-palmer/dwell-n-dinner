@@ -1,18 +1,12 @@
-.listing-section {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  .listing-card {
-    border: .5rem solid black;
-    border-radius: 1rem;
-    width: 25em;
-    margin: 1em;
+@import '../../styles/mixins';
+
+.listings {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  &__card {
+    @include card-styles;
   }
-  .listing-image {
+  &__image {
     width: 100%;
-    & > img {
-      object-fit: contain;
-    }
   }
 }
