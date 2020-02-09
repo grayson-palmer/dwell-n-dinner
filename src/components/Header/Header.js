@@ -12,8 +12,12 @@ export default Header = () => {
     </div>
     <h1 className='header-title'>Dwell-n-Dine</h1>
     <div className='header-buttons'>
-      <button><img src='../../images/favorite-icon.png' alt='favorite icon'></img>Favorites</button>
-      <button><img src='../../images/logout-icon.png' alt='logout icon'></img>Log Out</button>
+        <NavLink to='path-to-logout' className='nav'>
+          <img src='../../images/favorite-icon.png' alt='favorite icon' />Log Out
+        </NavLink>
+        <NavLink to='path-to-favorites' className='nav'>
+          <img src='../../images/logout-icon.png' alt='logout icon' />Favorites
+        </NavLink>
     </div>
   )
 }

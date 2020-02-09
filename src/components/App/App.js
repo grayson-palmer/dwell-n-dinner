@@ -3,6 +3,7 @@ import './App.scss';
 import Login from '../Login/Login.js';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import Areas from '../Areas/Areas.js';
+import Listings from '../Listings/Listings.js';
 
 export default class App extends Component {
   constructor() {
@@ -10,7 +11,8 @@ export default class App extends Component {
     this.state = {
       user: {},
       areaDetails: [],
-      listings: []
+      listings: [],
+      selectedAreaId: ''
     };
   }
 
@@ -29,7 +31,6 @@ export default class App extends Component {
               this.setState({
                 areaDetails: [...this.state.areaDetails, {...details, area: area.area || area.name}]
               });
-              console.log(this.state);
             })
             .catch(error => console.log(error));
         })
@@ -48,6 +49,11 @@ export default class App extends Component {
       .catch(error => console.log(error));
   };
 
+  setAreaId = (id) => {
+    this.setState({selectedAreaId: id})
+    
+  }
+
   componentDidMount = () => {
     Promise.all([this.getAreaDetails(), this.getListingDetails()]);
   };
@@ -56,7 +62,12 @@ export default class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route path='/areas' render={ () => <Areas areaSpecs={this.state.areaDetails} /> } />
+          <Route path='/areas/:id' render={ () => <Listings 
+            listings={this.state.listings} 
+            component={ Listings }
+            selectedAreaId={this.state.selectedAreaId} /> }
+          />
+          <Route path='/areas' render={ () => <Areas areaSpecs={this.state.areaDetails} setAreaId={this.setAreaId}/> } />
           <Route path='/' component={ Login } />
         </Switch>
       </div>
