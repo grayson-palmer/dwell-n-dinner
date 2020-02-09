@@ -7,7 +7,9 @@ const Listings = (props) => {
     return (
       <div className='listing-card'>
         <h4>{listing.name}</h4>
-        <img src={`/images/${listing.listing_id}_a.jpg`} alt={listing.name} width='100px'/>
+        <div className='.listing-image'>
+          <img src={`/images/${listing.listing_id}_a.jpg`} alt={listing.name} />
+        </div>
         <button type='button'>See Details</button>
       </div>
     )
