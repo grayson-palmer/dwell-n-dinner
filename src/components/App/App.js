@@ -84,7 +84,7 @@ export default class App extends Component {
             path="/areas"
             render={() => (
               <Areas
-                areaSpecs={this.state.areaDetails}
+                areaDetails={this.state.areaDetails}
                 setAreaId={this.setAreaId}
               />
             )}
