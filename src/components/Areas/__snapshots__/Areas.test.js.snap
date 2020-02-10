@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Areas should render the component 1`] = `
+<section
+  className="areas-container"
+>
+  <Link
+    className="area-card"
+    onClick={[Function]}
+    to="/areas/undefined"
+  >
+    <h2>
+      River North
+       - 
+      <i>
+        RiNo
+      </i>
+    </h2>
+    <p>
+      location
+    </p>
+    <p>
+      blah, blah, blah
+    </p>
+  </Link>
+</section>
+`;
