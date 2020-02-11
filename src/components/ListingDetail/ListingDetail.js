@@ -38,13 +38,13 @@ class ListingDetail extends Component {
             <img src={`/images/${listing_id}_c.jpg`} alt={name + ' 3'} />
           </div>
           <article className="listing-detail__info">
-            <div>
-              <h2 className="listing-detail__name">{name}</h2>
+            <div className="listing-detail__card">
+              <h3 className="listing-detail__name">{name}</h3>
               <p className="listing-detail__address">
                 {address.street} Denver, CO {address.zip}
               </p>
             </div>
-            <div className="listing-detail__amenities">
+            <div className="listing-detail__card">
               <h3>Amenities:</h3>
               <ul>
                 <li>Number of beds: {beds}</li>
@@ -52,7 +52,7 @@ class ListingDetail extends Component {
                 <li>Cost per night: ${cost_per_night}</li>
               </ul>
             </div>
-            <div className="listing-detail__features">
+            <div className="listing-detail__card">
               <h3>Features:</h3>
               <ul>{featureList}</ul>
             </div>

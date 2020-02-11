@@ -1,12 +1,24 @@
 @import '../../styles/mixins';
+@import '../../styles/variables';
 
 .listings {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  overflow: scroll;
+  width: 80%;
   &__card {
     @include card-styles;
+    align-items: center;
+    background-color: $main-background-color;
+    width: 20em;
   }
   &__image {
     width: 100%;
+  }
+  &__button {
+    @include button-styles;
+    border-radius: 0 0 0.5em 0.5em;
+    font-size: 1em;
+    width: 18em;;
   }
 }

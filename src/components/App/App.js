@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import './App.scss';
+import Header from '../Header/Header.js';
 import Login from '../Login/Login.js';
-import { Switch, Route } from 'react-router-dom';
 import Areas from '../Areas/Areas.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetail from '../ListingDetail/ListingDetail.js';
@@ -76,6 +77,8 @@ export default class App extends Component {
 
   render() {
     return (
+   <div className='app-background'>
+     <Header user={this.state.user} />
       <div className="app">
         <Switch>
           <Route
@@ -108,6 +111,7 @@ export default class App extends Component {
           />
           <Route path="/" component={Login} setUserInfo={this.setUserInfo} />
         </Switch>
+       </div>
       </div>
     );
   }

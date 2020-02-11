@@ -1,8 +1,13 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables';
+
 .login-form {
-  border: 0.75rem double black;
+@include text-bg-colors;
+  border: 0.75rem double $main-text-color;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  font-size: 1.5em;
   justify-content: space-around;
   padding: 2em;
   width: 40%;
@@ -12,8 +17,9 @@
       margin-top: 1em;
     }
   }
-  > input {
+  > input, select {
     border-radius: 0.25em;
+    font-size: 1em;
     padding: 0.25em;
   }
   > h1 {
@@ -22,15 +28,5 @@
 }
 
 .login-button {
-  align-items: center;
-  cursor: not-allowed;
-  border: .1rem solid black;
-  border-radius: 0.25em;
-  display: flex;
-  height: 20px;
-  justify-content: center;
-  margin-top: 1em;
-  padding: 0.2em;
-  text-decoration: none;
-  width: 98%;
+  @include button-styles;
 }

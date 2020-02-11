@@ -5,21 +5,17 @@ import { Link } from 'react-router-dom';
 const Areas = props => {
   const areaCards = props.areaDetails.map(area => {
     return (
-      <Link
-        to={`/areas/${area.id}`}
-        className="area-card"
-        onClick={() => props.setAreaId(area.id)}
-      >
-        <h2>
-          {area.name} - <i>{area.area}</i>
-        </h2>
-        <p>{area.location}</p>
-        <p>{area.about}</p>
+      <Link to={`/areas/${area.id}`} className="areas__card" id={`area-${area.id}`} onClick={() => props.setAreaId(area.id)}>
+        <div className='areas__info'>
+          <h2>{area.name} - <i>{area.area}</i></h2>
+          <p><i>{area.location}</i></p>
+          <p>{area.about}</p>
+        </div>
       </Link>
     );
   });
 
-  return <section className="areas-container">{areaCards}</section>;
+  return <section className="areas">{areaCards}</section>;
 };
 
 export default Areas;
