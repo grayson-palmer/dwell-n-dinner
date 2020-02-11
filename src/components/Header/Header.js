@@ -3,12 +3,18 @@ import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
 const Header = ({ user, setUserInfo }) => {
+  let greeting = '';
+  if (user.reason === 'other') {
+    greeting = 'Enjoy your visit';
+  } else if (user.reason) {
+    greeting = `Enjoy your ${user.reason}!`;
+  }
   return (
     <header className="header">
       <ul className="header__user-info">
         <li>{user.name}</li>
         <li>{user.email}</li>
-        <li>{user.reason}</li>
+        <li>{greeting}</li>
       </ul>
 
       <h1 className="header__title">Dwell-n-Dine</h1>
