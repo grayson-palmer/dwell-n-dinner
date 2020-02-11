@@ -2,26 +2,33 @@
 
 exports[`Areas should render the component 1`] = `
 <section
-  className="areas-container"
+  className="areas"
 >
   <Link
-    className="area-card"
+    className="areas__card"
+    id="area-undefined"
     onClick={[Function]}
     to="/areas/undefined"
   >
-    <h2>
-      River North
-       - 
-      <i>
-        RiNo
-      </i>
-    </h2>
-    <p>
-      location
-    </p>
-    <p>
-      blah, blah, blah
-    </p>
+    <div
+      className="areas__info"
+    >
+      <h2>
+        River North
+         - 
+        <i>
+          RiNo
+        </i>
+      </h2>
+      <p>
+        <i>
+          location
+        </i>
+      </p>
+      <p>
+        blah, blah, blah
+      </p>
+    </div>
   </Link>
 </section>
 `;
