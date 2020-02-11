@@ -96,7 +96,6 @@ export default class App extends Component {
               )}
             />
             <Route
-              listings={this.state.listings}
               path="/areas/:area_id/listing/:listing_id"
               render={({ match }) => (
                 <ListingDetail
@@ -130,7 +129,6 @@ export default class App extends Component {
           </Switch>
         </div>
       </div>
-    </div>
     );
   }
 }
