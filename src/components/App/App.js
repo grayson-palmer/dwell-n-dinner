@@ -7,6 +7,7 @@ import Areas from '../Areas/Areas.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetail from '../ListingDetail/ListingDetail.js';
 import Favorites from '../Favorites/Favorites.js';
+import { fetchArea, fetchAreaDetails, fetchListings } from '../../apiCalls/apiCalls';
 
 export default class App extends Component {
   constructor() {
@@ -43,12 +44,10 @@ export default class App extends Component {
   };
 
   getAreaDetails = () => {
-    fetch('http://localhost:3001/api/v1/areas')
-      .then(response => response.json())
+    fetchArea()
       .then(areas =>
         areas.areas.map(area => {
-          fetch(`http://localhost:3001${area.details}`)
-            .then(response => response.json())
+          fetchAreaDetails(area)
             .then(details => {
               this.setState({
                 areaDetails: [
@@ -64,8 +63,7 @@ export default class App extends Component {
   };
 
   getListingDetails = () => {
-    fetch('http://localhost:3001/api/v1/listings')
-      .then(response => response.json())
+    fetchListings()
       .then(listings =>
         listings.listings.map(listing => {
           this.setState({ listings: [...this.state.listings, listing] });
@@ -132,6 +130,7 @@ export default class App extends Component {
           </Switch>
         </div>
       </div>
+    </div>
     );
   }
 }
