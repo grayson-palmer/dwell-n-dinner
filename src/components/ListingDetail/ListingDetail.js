@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ListingDetail.scss';
-import { fetchListing } from '../../apiCalls/apiCalls';
+import { fetchListingDetails } from '../../apiCalls/apiCalls';
 
 class ListingDetail extends Component {
   constructor() {
@@ -16,11 +16,12 @@ class ListingDetail extends Component {
         params: { listing_id }
       }
     } = this.props;
-    fetchListing(listing_id)
-      .then(currentListing => this.setState({ currentListing }));
+    fetchListingDetails(listing_id)
+    .then(currentListing => this.setState({ currentListing }));
   }
 
   render() {
+    console.log(this.state.currentListing);
     if (this.state.currentListing) {
       const { addToFavorites } = this.props;
       const {
@@ -57,7 +58,7 @@ class ListingDetail extends Component {
               <ul>{featureList}</ul>
             </div>
           </article>
-          <button
+          <button className="listing-detail__button"
             type="button"
             onClick={() => {
               addToFavorites(this.state.currentListing);

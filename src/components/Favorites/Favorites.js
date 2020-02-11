@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Favorites = props => {
   if (props.listings) {
+    if (!props.favorites) {
+      return <h2>You have no favorites saved!</h2>
+    }
     const domListings = props.listings.map(listing => {
       return (
         <div className="listings__card">
