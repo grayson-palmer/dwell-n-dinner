@@ -10,6 +10,7 @@ const Header = ({ user, setUserInfo }) => {
         <li>{user.email}</li>
         <li>{user.reason}</li>
       </ul>
+
       <h1 className="header__title">Dwell-n-Dine</h1>
       <div className="header__nav">
         <NavLink to="/favorites" className="header__button fav">
@@ -17,8 +18,8 @@ const Header = ({ user, setUserInfo }) => {
           <div>Favorites</div>
         </NavLink>
         <NavLink
-          onClick={setUserInfo}
-          to="path-to-favorites"
+          onClick={() => setUserInfo({ name: '', email: '', reason: '' })}
+          to="path-to-login"
           className="header__button log-out"
         >
           <img src="../../images/logout-icon.png" alt="logout icon" />

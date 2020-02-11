@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 import Header from '../Header/Header.js';
 import Login from '../Login/Login.js';
@@ -21,6 +21,10 @@ export default class App extends Component {
   }
 
   setUserInfo = user => {
+    console.log(user);
+    if (!user.name) {
+      this.setState({ favorites: [] });
+    }
     this.setState({ user });
   };
 
