@@ -1,32 +1,41 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+
 .listing-detail {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-}
-
-.listing-detail__images {
-  display: flex;
-  background-color: #2b303a;
-  overflow: auto;
-  width: 100%;
-  > img {
-    width: 40em;
-    &:not(:last-child) {
-      margin-right: 0.75em;
+  &__images {
+    display: flex;
+    background-color: $main-background-color;
+    overflow: auto;
+    width: 100%;
+    > img {
+      width: 41em;
+      &:not(:last-child) {
+        margin-right: 0.75em;
+      }
     }
   }
-}
-
-.listing-detail__info {
-  display: flex;
-  justify-content: space-evenly;
-  > div {
-    border: 0.25em solid black;
-    flex: 1;
-    padding: 0.5em;
+  &__card {
+    @include card-styles;
+    @include text-bg-colors;
+    border-radius: 0;
+    justify-content: space-around;
+    margin: 0;
+    width: 100%;
+    > h3 {
+      font-size: 1.5em;
+      margin: 0.5em;
+    }
+    > p, li {
+      padding: 0.5em;
+      margin: 0.5em;
+    }
   }
-  > h2,
-  h3 {
-    font-size: 1.5rem;
+  &__info {
+    display: flex;
+    justify-content: space-evenly;
   }
 }

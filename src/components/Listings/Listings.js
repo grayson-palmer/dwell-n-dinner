@@ -9,13 +9,13 @@ const Listings = props => {
   const domListings = filteredListings.map(({ name, listing_id, area_id }) => {
     return (
       <div className="listings__card">
-        <h4>{name}</h4>
+        <h3>{name}</h3>
         <img
           className="listings__image"
           src={`/images/${listing_id}_a.jpg`}
           alt={name}
         />
-        <Link to={`/areas/${area_id}/listing/${listing_id}`}>See Details</Link>
+        <Link to={`/areas/${area_id}/listing/${listing_id}`} className='listings__button'>See Details</Link>
       </div>
     );
   });

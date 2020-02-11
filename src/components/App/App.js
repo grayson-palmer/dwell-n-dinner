@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.scss';
-import Login from '../Login/Login.js';
 import { Switch, Route, NavLink } from 'react-router-dom';
+import './App.scss';
+import Header from '../Header/Header.js';
+import Login from '../Login/Login.js';
 import Areas from '../Areas/Areas.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetail from '../ListingDetail/ListingDetail.js';
@@ -63,34 +64,37 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="app">
-        <Switch>
-          <Route
-            component={ListingDetail}
-            listings={this.state.listings}
-            path="/areas/:area_id/listing/:listing_id"
-          />
-          <Route
-            path="/areas/:id"
-            render={() => (
-              <Listings
-                listings={this.state.listings}
-                component={Listings}
-                selectedAreaId={this.state.selectedAreaId}
-              />
-            )}
-          />
-          <Route
-            path="/areas"
-            render={() => (
-              <Areas
-                areaSpecs={this.state.areaDetails}
-                setAreaId={this.setAreaId}
-              />
-            )}
-          />
-          <Route path="/" component={Login} />
-        </Switch>
+      <div className='app-background'>
+        <Header user={this.state.user} />
+        <div className="app">
+          <Switch>
+            <Route
+              component={ListingDetail}
+              listings={this.state.listings}
+              path="/areas/:area_id/listing/:listing_id"
+            />
+            <Route
+              path="/areas/:id"
+              render={() => (
+                <Listings
+                  listings={this.state.listings}
+                  component={Listings}
+                  selectedAreaId={this.state.selectedAreaId}
+                />
+              )}
+            />
+            <Route
+              path="/areas"
+              render={() => (
+                <Areas
+                  areaSpecs={this.state.areaDetails}
+                  setAreaId={this.setAreaId}
+                />
+              )}
+            />
+            <Route path="/" component={Login} />
+          </Switch>
+        </div>
       </div>
     );
   }

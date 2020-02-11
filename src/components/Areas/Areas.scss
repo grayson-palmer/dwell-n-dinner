@@ -1,16 +1,48 @@
 @import '../../styles/mixins';
+@import '../../styles/variables.scss';
 
-.area-card {
-  @include card-styles;
-  height: 15em;
-  padding: 0.75em;
-  text-decoration: none;
-  margin: 0;
-}
-
-.areas-container {
+.areas {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   display: grid;
   grid-gap: 0.5em;
+  &__card {
+    @include card-styles; 
+    @include text-bg-colors;
+    font-size: 1.25em;
+    justify-content: space-around;
+    height: 15em;
+    padding: 0.75em;
+    text-decoration: none;
+    margin: 0;
+  }
+  &__info {
+    background-color: $seethru-background;
+    border-radius: 0.5em;
+    height: 15em;
+    padding: 1em;
+    & > p {
+      margin: .25em;
+    }
+  }
+}
+
+#area-590 {
+  background: url('/images/rino.png') no-repeat center/100%;
+  object-fit: unset;
+}
+
+#area-751 {
+  background: url('/images/park-hill.png') no-repeat center/100%;
+  object-fit: unset;
+}
+
+#area-240 {
+  background: url('/images/cap-hill.png') no-repeat center/100%;
+  object-fit: unset;
+}
+
+#area-408 {
+  background: url('/images/lohi.png') no-repeat center/100%;
+  object-fit: unset;
 }

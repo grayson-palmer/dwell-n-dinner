@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
-export default Header = () => {
+const Header = ({ user }) => {
   return (
-    <div className='header-user-info'>
-      {/* User info from state 
-      <p>{username}</p>
-      <p>{email}</p>
-      <p>{reason}</p>
-      */}
-    </div>
-    <h1 className='header-title'>Dwell-n-Dine</h1>
-    <div className='header-buttons'>
-        <NavLink to='path-to-logout' className='nav'>
-          <img src='../../images/favorite-icon.png' alt='favorite icon' />Log Out
-        </NavLink>
-        <NavLink to='path-to-favorites' className='nav'>
-          <img src='../../images/logout-icon.png' alt='logout icon' />Favorites
-        </NavLink>
-    </div>
+    <header className='header'>
+        <ul className='header__user-info'>
+          <li>username</li>
+          <li>email</li>
+          <li>reason</li>
+        </ul>
+      <h1 className='header__title'>Dwell-n-Dine</h1>
+      <div className='header__nav'>
+          <NavLink to='path-to-logout' className='header__button fav'>
+            <img src='../../images/favorite-icon.png' alt='favorite icon' />
+            <div>Favorites</div>
+          </NavLink>
+          <NavLink to='path-to-favorites' className='header__button log-out'>
+            <img src='../../images/logout-icon.png' alt='logout icon' />
+            <div>Log Out</div>
+          </NavLink>
+      </div>
+    </header>
   )
 }
+
+export default Header;
