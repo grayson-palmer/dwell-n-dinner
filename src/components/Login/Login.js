@@ -19,7 +19,7 @@ export default class Login extends Component {
   loginUser = e => {
     e.preventDefault();
     const { setUserInfo } = this.props;
-    setUserInfo({ ...this.state });
+    setUserInfo(this.state);
   };
 
   render() {
