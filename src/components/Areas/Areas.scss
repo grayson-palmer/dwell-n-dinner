@@ -7,12 +7,12 @@
   display: grid;
   grid-gap: 0.5em;
   &__card {
-    @include card-styles; 
+    @include card-styles;
     @include text-bg-colors;
-    font-size: 1.25em;
+    font-size: 1em;
     justify-content: space-around;
     height: 15em;
-    padding: 0.75em;
+    padding: 0.5em;
     text-decoration: none;
     margin: 0;
   }
@@ -22,7 +22,7 @@
     height: 15em;
     padding: 1em;
     & > p {
-      margin: .25em;
+      margin: 0.25em;
     }
   }
 }

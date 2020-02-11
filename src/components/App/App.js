@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 import Header from '../Header/Header.js';
 import Login from '../Login/Login.js';
 import Areas from '../Areas/Areas.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetail from '../ListingDetail/ListingDetail.js';
+import Favorites from '../Favorites/Favorites.js';
 import { fetchArea, fetchAreaDetails, fetchListings } from '../../apiCalls/apiCalls';
 
 export default class App extends Component {
@@ -21,18 +22,25 @@ export default class App extends Component {
   }
 
   setUserInfo = user => {
+    console.log(user);
+    if (!user.name) {
+      this.setState({ favorites: [] });
+    }
     this.setState({ user });
   };
 
   addToFavorites = listing => {
-    this.setState({ favorites: [...this.state.favorites, listing] });
+    if (!this.state.favorites.includes(listing)) {
+      this.setState({ favorites: [...this.state.favorites, listing] });
+    }
   };
 
   removeFromFavorites = listing => {
     const revisedFavorites = this.state.favorites.filter(favorite => {
       return favorite !== listing;
     });
-    this.setState({ favorites: [revisedFavorites] });
+    console.log(revisedFavorites);
+    this.setState({ favorites: [...revisedFavorites] });
   };
 
   getAreaDetails = () => {
@@ -74,40 +82,53 @@ export default class App extends Component {
 
   render() {
     return (
-    <div className='app-background'>
-      <Header user={this.state.user} />
-      <div className="app">
-        <Switch>
-          <Route
-            listings={this.state.listings}
-            path="/areas/:area_id/listing/:listing_id"
-            render={({ match }) => (
-              <ListingDetail
-                addToFavorites={this.addToFavorites}
-                match={match}
-              />
-            )}
-          />
-          <Route
-            path="/areas/:id"
-            render={() => (
-              <Listings
-                listings={this.state.listings}
-                selectedAreaId={this.state.selectedAreaId}
-              />
-            )}
-          />
-          <Route
-            path="/areas"
-            render={() => (
-              <Areas
-                areaDetails={this.state.areaDetails}
-                setAreaId={this.setAreaId}
-              />
-            )}
-          />
-          <Route path="/" component={Login} setUserInfo={this.setUserInfo} />
-        </Switch>
+      <div className="app-background">
+        <Header setUserInfo={this.setUserInfo} user={this.state.user} />
+        <div className="app">
+          <Switch>
+            <Route
+              path="/favorites"
+              render={() => (
+                <Favorites
+                  listings={this.state.favorites}
+                  removeFromFavorites={this.removeFromFavorites}
+                />
+              )}
+            />
+            <Route
+              listings={this.state.listings}
+              path="/areas/:area_id/listing/:listing_id"
+              render={({ match }) => (
+                <ListingDetail
+                  addToFavorites={this.addToFavorites}
+                  match={match}
+                />
+              )}
+            />
+            <Route
+              path="/areas/:id"
+              render={() => (
+                <Listings
+                  listings={this.state.listings}
+                  selectedAreaId={this.state.selectedAreaId}
+                />
+              )}
+            />
+            <Route
+              path="/areas"
+              render={() => (
+                <Areas
+                  areaDetails={this.state.areaDetails}
+                  setAreaId={this.setAreaId}
+                />
+              )}
+            />
+            <Route
+              path="/"
+              render={() => <Login setUserInfo={this.setUserInfo} />}
+            />
+          </Switch>
+        </div>
       </div>
     </div>
     );

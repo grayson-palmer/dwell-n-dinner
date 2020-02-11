@@ -2,12 +2,12 @@
 @import '../../styles/variables';
 
 .login-form {
-@include text-bg-colors;
+  @include text-bg-colors;
   border: 0.75rem double $main-text-color;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  font-size: 1.5em;
+  font-size: 1.25em;
   justify-content: space-around;
   padding: 2em;
   width: 40%;
@@ -17,7 +17,8 @@
       margin-top: 1em;
     }
   }
-  > input, select {
+  > input,
+  select {
     border-radius: 0.25em;
     font-size: 1em;
     padding: 0.25em;

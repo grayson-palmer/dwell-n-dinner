@@ -6,9 +6,10 @@
   color: $main-text-color;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 70px); 
+  height: calc(100vh - 70px);
   justify-content: center;
   margin-top: 70px;
+  // padding: 3em;
   width: 100%;
 }
 

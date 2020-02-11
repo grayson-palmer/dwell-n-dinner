@@ -16,8 +16,7 @@ export default class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  loginUser = e => {
-    e.preventDefault();
+  loginUser = () => {
     const { setUserInfo } = this.props;
     setUserInfo(this.state);
   };
@@ -45,12 +44,12 @@ export default class Login extends Component {
           <option disabled selected value>
             -- select an option --
           </option>
-          <option value="Special Occasion">Special Occasion</option>
-          <option value="Business">Business</option>
-          <option value="Vacation">Vacation</option>
-          <option value="Other">Other</option>
+          <option value="special occasion">Special Occasion</option>
+          <option value="business">Business</option>
+          <option value="vacation">Vacation</option>
+          <option value="other">Other</option>
         </select>
-        <Link className="login-button" to="/areas">
+        <Link onClick={this.loginUser} className="login-button" to="/areas">
           Login
         </Link>
       </form>
