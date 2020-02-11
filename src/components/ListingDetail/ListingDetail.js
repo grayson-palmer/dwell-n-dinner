@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './ListingDetail.scss';
+import { fetchListing } from '../../apiCalls/apiCalls';
 
 class ListingDetail extends Component {
   constructor() {
@@ -15,8 +16,7 @@ class ListingDetail extends Component {
         params: { listing_id }
       }
     } = this.props;
-    fetch(`http://localhost:3001/api/v1/listings/${listing_id}`)
-      .then(response => response.json())
+    fetchListing(listing_id)
       .then(currentListing => this.setState({ currentListing }));
   }
 

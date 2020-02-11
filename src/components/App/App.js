@@ -6,6 +6,7 @@ import Login from '../Login/Login.js';
 import Areas from '../Areas/Areas.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetail from '../ListingDetail/ListingDetail.js';
+import { fetchArea, fetchAreaDetails, fetchListings } from '../../apiCalls/apiCalls';
 
 export default class App extends Component {
   constructor() {
@@ -25,7 +26,6 @@ export default class App extends Component {
 
   addToFavorites = listing => {
     this.setState({ favorites: [...this.state.favorites, listing] });
-    console.log(this.state.favorites);
   };
 
   removeFromFavorites = listing => {
@@ -36,12 +36,10 @@ export default class App extends Component {
   };
 
   getAreaDetails = () => {
-    fetch('http://localhost:3001/api/v1/areas')
-      .then(response => response.json())
+    fetchArea()
       .then(areas =>
         areas.areas.map(area => {
-          fetch(`http://localhost:3001${area.details}`)
-            .then(response => response.json())
+          fetchAreaDetails(area)
             .then(details => {
               this.setState({
                 areaDetails: [
@@ -57,8 +55,7 @@ export default class App extends Component {
   };
 
   getListingDetails = () => {
-    fetch('http://localhost:3001/api/v1/listings')
-      .then(response => response.json())
+    fetchListings()
       .then(listings =>
         listings.listings.map(listing => {
           this.setState({ listings: [...this.state.listings, listing] });
@@ -77,8 +74,8 @@ export default class App extends Component {
 
   render() {
     return (
-   <div className='app-background'>
-     <Header user={this.state.user} />
+    <div className='app-background'>
+      <Header user={this.state.user} />
       <div className="app">
         <Switch>
           <Route
@@ -111,8 +108,8 @@ export default class App extends Component {
           />
           <Route path="/" component={Login} setUserInfo={this.setUserInfo} />
         </Switch>
-       </div>
       </div>
+    </div>
     );
   }
 }
