@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Login from '../Login/Login.js';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Areas from '../Areas/Areas.js';
 import Listings from '../Listings/Listings.js';
 import ListingDetail from '../ListingDetail/ListingDetail.js';
@@ -13,12 +13,25 @@ export default class App extends Component {
       user: {},
       areaDetails: [],
       listings: [],
-      selectedAreaId: ''
+      selectedAreaId: '',
+      favorites: []
     };
   }
 
   setUserInfo = user => {
     this.setState({ user });
+  };
+
+  addToFavorites = listing => {
+    this.setState({ favorites: [...this.state.favorites, listing] });
+    console.log(this.state.favorites);
+  };
+
+  removeFromFavorites = listing => {
+    const revisedFavorites = this.state.favorites.filter(favorite => {
+      return favorite !== listing;
+    });
+    this.setState({ favorites: [revisedFavorites] });
   };
 
   getAreaDetails = () => {
@@ -66,16 +79,20 @@ export default class App extends Component {
       <div className="app">
         <Switch>
           <Route
-            component={ListingDetail}
             listings={this.state.listings}
             path="/areas/:area_id/listing/:listing_id"
+            render={({ match }) => (
+              <ListingDetail
+                addToFavorites={this.addToFavorites}
+                match={match}
+              />
+            )}
           />
           <Route
             path="/areas/:id"
             render={() => (
               <Listings
                 listings={this.state.listings}
-                component={Listings}
                 selectedAreaId={this.state.selectedAreaId}
               />
             )}
@@ -89,7 +106,7 @@ export default class App extends Component {
               />
             )}
           />
-          <Route path="/" component={Login} />
+          <Route path="/" component={Login} setUserInfo={this.setUserInfo} />
         </Switch>
       </div>
     );
