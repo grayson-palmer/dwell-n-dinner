@@ -1,7 +1,18 @@
+@import '../../styles/variables';
+
 .app {
+  align-items: center;
+  background-color: $seethru-background;
+  color: $main-text-color;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 70px); 
   justify-content: center;
-  align-items: center;
+  margin-top: 70px;
   width: 100%;
+}
+
+.app-background {
+  background: url('/images/skyline.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
