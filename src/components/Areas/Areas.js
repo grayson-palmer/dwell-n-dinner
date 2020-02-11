@@ -3,7 +3,7 @@ import './Areas.scss';
 import { Link } from 'react-router-dom';
 
 const Areas = props => {
-  const areaCards = props.areaSpecs.map(area => {
+  const areaCards = props.areaDetails.map(area => {
     return (
       <Link to={`/areas/${area.id}`} className="areas__card" id={`area-${area.id}`} onClick={() => props.setAreaId(area.id)}>
         <div className='areas__info'>

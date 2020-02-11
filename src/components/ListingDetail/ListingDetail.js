@@ -22,6 +22,7 @@ class ListingDetail extends Component {
 
   render() {
     if (this.state.currentListing) {
+      const { addToFavorites } = this.props;
       const {
         currentListing: { name, details, address, listing_id }
       } = this.state;
@@ -32,9 +33,9 @@ class ListingDetail extends Component {
       return (
         <section className="listing-detail">
           <div className="listing-detail__images">
-            <img src={`/images/${listing_id}_a.jpg`} />
-            <img src={`/images/${listing_id}_b.jpg`} />
-            <img src={`/images/${listing_id}_c.jpg`} />
+            <img src={`/images/${listing_id}_a.jpg`} alt={name + ' 1'} />
+            <img src={`/images/${listing_id}_b.jpg`} alt={name + ' 2'} />
+            <img src={`/images/${listing_id}_c.jpg`} alt={name + ' 3'} />
           </div>
           <article className="listing-detail__info">
             <div className="listing-detail__card">
@@ -56,6 +57,14 @@ class ListingDetail extends Component {
               <ul>{featureList}</ul>
             </div>
           </article>
+          <button
+            type="button"
+            onClick={() => {
+              addToFavorites(this.state.currentListing);
+            }}
+          >
+            Favorite
+          </button>
         </section>
       );
     }

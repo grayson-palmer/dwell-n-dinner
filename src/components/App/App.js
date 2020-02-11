@@ -14,12 +14,25 @@ export default class App extends Component {
       user: {},
       areaDetails: [],
       listings: [],
-      selectedAreaId: ''
+      selectedAreaId: '',
+      favorites: []
     };
   }
 
   setUserInfo = user => {
     this.setState({ user });
+  };
+
+  addToFavorites = listing => {
+    this.setState({ favorites: [...this.state.favorites, listing] });
+    console.log(this.state.favorites);
+  };
+
+  removeFromFavorites = listing => {
+    const revisedFavorites = this.state.favorites.filter(favorite => {
+      return favorite !== listing;
+    });
+    this.setState({ favorites: [revisedFavorites] });
   };
 
   getAreaDetails = () => {
@@ -64,37 +77,41 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className='app-background'>
-        <Header user={this.state.user} />
-        <div className="app">
-          <Switch>
-            <Route
-              component={ListingDetail}
-              listings={this.state.listings}
-              path="/areas/:area_id/listing/:listing_id"
-            />
-            <Route
-              path="/areas/:id"
-              render={() => (
-                <Listings
-                  listings={this.state.listings}
-                  component={Listings}
-                  selectedAreaId={this.state.selectedAreaId}
-                />
-              )}
-            />
-            <Route
-              path="/areas"
-              render={() => (
-                <Areas
-                  areaSpecs={this.state.areaDetails}
-                  setAreaId={this.setAreaId}
-                />
-              )}
-            />
-            <Route path="/" component={Login} />
-          </Switch>
-        </div>
+   <div className='app-background'>
+     <Header user={this.state.user} />
+      <div className="app">
+        <Switch>
+          <Route
+            listings={this.state.listings}
+            path="/areas/:area_id/listing/:listing_id"
+            render={({ match }) => (
+              <ListingDetail
+                addToFavorites={this.addToFavorites}
+                match={match}
+              />
+            )}
+          />
+          <Route
+            path="/areas/:id"
+            render={() => (
+              <Listings
+                listings={this.state.listings}
+                selectedAreaId={this.state.selectedAreaId}
+              />
+            )}
+          />
+          <Route
+            path="/areas"
+            render={() => (
+              <Areas
+                areaDetails={this.state.areaDetails}
+                setAreaId={this.setAreaId}
+              />
+            )}
+          />
+          <Route path="/" component={Login} setUserInfo={this.setUserInfo} />
+        </Switch>
+       </div>
       </div>
     );
   }
